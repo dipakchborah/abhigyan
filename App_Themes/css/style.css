@@ -433,3 +433,59 @@
     padding-right: 0;
     border-right: none;
 }
+
+/* Floating Call Button */
+
+.call-float{
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    background: #ff4d00;
+    color: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    text-decoration: none;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+.call-float i{
+    transform: scaleX(-1);
+}
+
+/* Hover animation */
+.call-float:hover{
+    transform: scale(1.1);
+    background: #ff6600;
+    color: #ffffff;
+}
+
+/* Pulse animation */
+.call-float{
+    animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        box-shadow: 0 0 0 0 rgba(255,77,0,0.6);
+    }
+    70%{
+        box-shadow: 0 0 0 18px rgba(255,77,0,0);
+    }
+    100%{
+        box-shadow: 0 0 0 0 rgba(255,77,0,0);
+    }
+}
+
+/* Hide on desktop */
+@media (min-width: 992px){
+    .call-float{
+        display: none;
+    }
+}
