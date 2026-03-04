@@ -107,3 +107,48 @@
     
 })(jQuery);
 
+document.addEventListener("DOMContentLoaded", function () {
+
+const form = document.getElementById("admissionForm");
+
+if(form){
+
+form.addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+
+
+submitBtn.innerText = "Submitting...";
+submitBtn.disabled = true;
+
+const formData = new FormData();
+
+formData.append("entry.1097680259", document.getElementById("studentName").value);
+formData.append("entry.27134337", document.getElementById("presentSchool").value);
+formData.append("entry.160877990", document.getElementById("studentClass").value);
+formData.append("entry.1298337568", document.getElementById("mobile").value);
+formData.append("entry.1350451581", document.getElementById("address").value);
+console.log(formData);
+
+await fetch(
+"https://docs.google.com/forms/d/e/1FAIpQLSe4nWLO0F7ziEz1TISDnmJrKUQybrt99n-NtFthrcq58S0apQ/formResponse",
+{
+method:"POST",
+mode:"no-cors",
+body:formData
+}
+);
+
+document.getElementById("successMessage").style.display = "block";
+
+form.reset();
+
+submitBtn.innerText = "Submit Registration";
+submitBtn.disabled = false;
+
+});
+
+}
+
+});
